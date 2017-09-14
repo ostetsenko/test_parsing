@@ -29,16 +29,16 @@ This means that the tuple on the even position (in parse_result) contains the da
 The tuple on the odd position (in parse_result) contains the subject:
         ('','','','','any subject')
 """
-quantity_dict = {}
+quantities_dict = {}
 for i in range(len(parse_result) // 2):
     email = parse_result[2*i][0]
     date = "%s %s %s" % (parse_result[2*i][2], parse_result[2*i][1], parse_result[2*i][3])
     subject = parse_result[2*i+1][4]
     print("%s (%s): %s" % (email, date, subject))
-    if email in quantity_dict:
-        quantity_dict[email] += 1
+    if email in quantities_dict:
+        quantities_dict[email] += 1
     else:
-        quantity_dict[email] = 1
+        quantities_dict[email] = 1
 
-for key, value in quantity_dict.items():
-    print("%s: %d" %(key, value))
+for user, quantity in quantities_dict.items():
+    print("%s: %d" %(user, quantity))
